@@ -100,29 +100,6 @@ public class TestBase {
 		test.log(LogStatus.INFO, "Typing in: " + locator + "Entered value as :" + value);
 	}
 
-	static WebElement dropdown;
-
-	/**
-	 * @param locator selenium locator using to locate element
-	 * @param value   value of particular attribute
-	 */
-	public void select(String locator, String value) {
-
-		if (locator.endsWith("_CSS")) {
-			dropdown = driver.findElement(By.cssSelector(OR.getProperty(locator)));
-		} else if (locator.endsWith("_XPATH")) {
-			dropdown = driver.findElement(By.xpath(OR.getProperty(locator)));
-		} else if (locator.endsWith("_ID")) {
-			dropdown = driver.findElement(By.id(OR.getProperty(locator)));
-		}
-
-		Select select = new Select(dropdown);
-		select.selectByVisibleText(value);
-
-		test.log(LogStatus.INFO, "Selecting from dropdown : " + locator + " value as " + value);
-
-	}
-
 	/**
 	 * To close browser connection
 	 */
